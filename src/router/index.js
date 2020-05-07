@@ -33,7 +33,7 @@ const routes = [
         path: '/DetailsTvShow/:TvShowId',
         name: 'DetailsTvShow',
         component: DetailsTvShow,
-		prop: true
+		props: true
     }
 ]
 
