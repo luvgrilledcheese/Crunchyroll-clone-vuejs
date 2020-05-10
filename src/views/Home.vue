@@ -11,32 +11,33 @@
                 <label for="GenreId">Genre:</label>
                 <select class="form-control" id="GenreId" style="min-width:240px;" v-model="GenreFilter">
                     <option value=""></option>
+                    <option v-for="g in Genres" v-bind:value="g.GenreId">{{g.Name}}</option>
                 </select>
             </div>
             <div class="form-group mb-4">
                 <label for="StudioId">Studio:</label>
                 <select id="StudioId"  v-model="StudioFilter" class="form-control" style="min-width:240px;">
                     <option value=""></option>
+                    <option v-for="s in Studios" v-bind:value="s.Name">{{s.Name}}</option>
                 </select>
             </div>
         </form>
         <div class="row">
-            <div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
-                    <!--<router-link :to="{ name: 'DetailsTvShow', params: { TvShowId: XYZ.TvShowId } }">-->
-                        <div class="card rounded">
-                            <img class="card-img-top" />
-                            <div class="card-body text-center" style="max-heigth:210px;">
-                                <h4 class="card-title" style="min-height:50px;max-height:50px;">
-                                </h4>
-                                <!--afficher SeasonCount suivi du mot "season" si SeasonCount est égal à 1-->
-                                <div></div>
-                                <!--afficher SeasonCount suivi du mot seasons si SeasonCount est plus grand que 1-->
-                                <div></div>
-                            </div>
+            <div class="col-lg-3 col-md-4 col-12 mb-4" v-for="t in TvShows">
+                <router-link :to="{ name: 'DetailsTvShow', params: { TvShowId: t.TvShowId } }">
+                    <div class="card round  ed">
+                        <img class="card-img-top" :src="t.Image"/>
+                        <div class="card-body text-center" style="max-heigth:210px;">
+                            <h4 class="card-title" style="min-height:50px;max-height:50px;">
+                                {{t.Title}}
+                            </h4>
+                            <!--afficher SeasonCount suivi du mot "season" si SeasonCount est égal à 1-->
+                            <div v-if="t.SeasonCount === 1">1 season</div>
+                            <!--afficher SeasonCount suivi du mot seasons si SeasonCount est plus grand que 1-->
+                            <div v-else>{{t.SeasonCount}} seasons</div>
                         </div>
-                    <!--</router-link>-->
-                </div>
+                    </div>
+                </router-link>
             </div>
         </div>
     </div>
