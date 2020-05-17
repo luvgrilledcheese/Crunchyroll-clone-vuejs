@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <h2 style="text-align:center">Login</h2>
-        <form id="frmLogin">
-            <div id="grpEmail" class="form-group row">
+        <h2 style="text-align:center">Profile</h2>
+        <form id="profile">
+            <div class="form-group row">
                 <label for="email" class="col-3 col-form-label">Email</label>
                 <div class="col-9">
                     <input
@@ -15,7 +15,7 @@
                     />
                 </div>
             </div>
-            <div id="grpPassword" class="form-group row">
+            <div class="form-group row">
                 <label for="password" class="col-3 col-form-label">Password</label>
                 <div class="col-9">
                     <input
@@ -23,7 +23,19 @@
                         class="form-control"
                         id="password"
                         placeholder="Password"
-                        required
+                        minlength="4"
+                        maxlength="15"
+                    />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="passwordconfirm" class="col-3 col-form-label">Password Confirmation</label>
+                <div class="col-9">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="passwordconfirm"
+                        placeholder="Password"
                         minlength="4"
                         maxlength="15"
                     />
@@ -33,7 +45,7 @@
                 <div class="col-3"></div>
                 <div class="col-9">
                     <button type="submit" class="btn btn-primary">
-                        Login
+                        Update Profile
                     </button>
                 </div>
             </div>
@@ -45,7 +57,7 @@
                         class="alert alert-danger"
                         style="display:inline-block;margin:0 auto;"
                         role="alert">
-                        {{errorText}}
+                        {{ errorText }}
                     </div>
                 </div>
             </div>
@@ -55,6 +67,8 @@
 
 <script>
     export default {
-        name: "Login"
+        name: "Profile"
     };
 </script>
+
+<style></style>
