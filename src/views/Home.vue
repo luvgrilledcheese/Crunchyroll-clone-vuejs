@@ -11,19 +11,19 @@
                 <label for="GenreId">Genre:</label>
                 <select class="form-control" id="GenreId" style="min-width:240px;" v-model="GenreFilter">
                     <option value=""></option>
-                    <option v-for="g in Genres" v-bind:value="g.GenreId">{{g.Name}}</option>
+                    <option v-for="g in Genres" v-bind:value="g.GenreId" v-bind:key="g.GenreId">{{g.Name}}</option>
                 </select>
             </div>
             <div class="form-group mb-4">
                 <label for="StudioId">Studio:</label>
                 <select id="StudioId"  v-model="StudioFilter" class="form-control" style="min-width:240px;">
                     <option value=""></option>
-                    <option v-for="s in Studios" v-bind:value="s.Name">{{s.Name}}</option>
+                    <option v-for="s in Studios" v-bind:value="s.Name" v-bind:key="s.GenreId">{{s.Name}}</option>
                 </select>
             </div>
         </form>
         <div class="row">
-            <div class="col-lg-3 col-md-4 col-12 mb-4" v-for="t in TvShows">
+            <div class="col-lg-3 col-md-4 col-12 mb-4" v-for="t in TvShows" v-bind:key="t.TvShowId">
                 <router-link :to="{ name: 'DetailsTvShow', params: { TvShowId: t.TvShowId } }">
                     <div class="card round  ed">
                         <img class="card-img-top" :src="t.Image"/>
@@ -48,6 +48,7 @@
         text-decoration: none !important;
         color: black;
     }
+
     .form-inline .form-group {
         margin-right: 20px;
     }
@@ -129,3 +130,7 @@ export default {
     }
 };
 </script>
+
+
+//exemple prof: http://tvshowclient.sv55.cmaisonneuve.qc.ca/#/DetailsTvShow/17
+//api:          http://tvshowapi.sv55.cmaisonneuve.qc.ca/api/tvshow?TvShowId=17

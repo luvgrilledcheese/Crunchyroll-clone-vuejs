@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-7">
                         <p class="text-right">
-                            <span v-for="g in TvShow.Genres" v-if="TvShow.Genres[TvShow.Genres.length - 1] != g">{{g.Name}}, </span>
+                            <span v-for="g in TvShow.Genres" v-if="TvShow.Genres[TvShow.Genres.length - 1] != g" v-bind:key="g.GenreId">{{g.Name}}, </span>
                             <span v-else>{{g.Name}}</span>
                         </p>
                     </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-3 mb-4" v-for="r in TvShow.Roles">
+            <div class="col-lg-2 col-md-2 col-sm-3 mb-4" v-for="r in TvShow.Roles" v-bind:key="r.RoleId">
                 <div class="card" style="min-width: 160px; max-width: 160px;">
                     <img v-bind:src="r.Image" v-bind:alt="r.Name" class="card-img-top mx-auto rounded role-img" style="min-width: 160px; max-width: 160px; min-height: 240px; max-height: 240px;">
                     <div class="card-body text-center" style="min-height: 140px;">
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4" v-for="s in TvShow.Seasons">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4" v-for="s in TvShow.Seasons" v-bind:key="s.SeasonId">
                 <div class="card" style="max-width: 250px; min-width: 250px;">
                     <img v-bind:src="s.Image" v-bind:alt="s.ShortSeasonName" class="card-img-top mx-auto rounded" style="max-width: 250px; max-height: 375px; min-width: 250px; min-height: 375px;">
                     <div class="card-body text-center">
