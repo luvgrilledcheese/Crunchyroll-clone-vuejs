@@ -5,7 +5,8 @@ import DetailsTvShow from '../views/DetailsTvShow.vue'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
-
+import EpisodeList from '../views/EpisodeList.vue'
+import DetailsEpisode from '../views/DetailsEpisode'
 Vue.use(VueRouter)
 
 const routes = [
@@ -34,6 +35,18 @@ const routes = [
         name: 'DetailsTvShow',
         component: DetailsTvShow,
 		props: true
+    },
+    {
+        path: '/EpisodeList/:SeasonId',
+        name: 'EpisodeList',
+        component: EpisodeList,
+        props: true
+    },
+    {
+        path: '/DetailsEpisode/:EpisodeId',
+        name: 'DetailsEpisode',
+        component: DetailsEpisode,
+        props: true
     }
 ]
 

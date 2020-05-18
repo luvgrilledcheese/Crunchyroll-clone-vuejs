@@ -36,32 +36,26 @@
         </div>
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-3 mb-4" v-for="r in TvShow.Roles" v-bind:key="r.RoleId">
-                <div class="card" style="min-width: 160px; max-width: 160px;">
-                    <img v-bind:src="r.Image" v-bind:alt="r.Name" class="card-img-top mx-auto rounded role-img" style="min-width: 160px; max-width: 160px; min-height: 240px; max-height: 240px;">
-                    <div class="card-body text-center" style="min-height: 140px;">
-                        <p class="card-title small" style="font-weight: bold;">{{r.Name}}</p>
-                        <p class="small">{{r.Character}}</p>
-                    </div>
-                </div>
+                <Actor v-bind:Actor="r"/>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4" v-for="s in TvShow.Seasons" v-bind:key="s.SeasonId">
-                <div class="card" style="max-width: 250px; min-width: 250px;">
-                    <img v-bind:src="s.Image" v-bind:alt="s.ShortSeasonName" class="card-img-top mx-auto rounded" style="max-width: 250px; max-height: 375px; min-width: 250px; min-height: 375px;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Season {{s.Number}}</h5>
-                        <p>{{s.EpisodeCount}} episodes</p>
-                    </div>
-                </div>
+                <Season v-bind:Season="s"/>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import Actor from "@/components/Actor.vue";
+import Season from "@/components/Season.vue";
 export default {
     name: "DetailsTvShow",
+    components: {
+        Actor,
+        Season
+    },
     props: ["TvShowId"],
     data: function () {
         return {
@@ -70,11 +64,6 @@ export default {
     },
     methods: {
         GetTvShow: function () {
-            //L'objectif est d'appeller l'api /api/tvshow?TvShowId=X où X est
-            //TvShowId reçu en paramètre, soit la propriété this.TvShowId
-            //Placez les données reçues dans la propriété this.TvShow
-            //Complétez..
-            //fetch(...
             let url = `http://tvshowapi.sv55.cmaisonneuve.qc.ca/api/tvshow?TvShowId=${this.TvShowId}`;
             console.log('url:', url);
             fetch(url)

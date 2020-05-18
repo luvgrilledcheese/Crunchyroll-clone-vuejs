@@ -24,20 +24,7 @@
         </form>
         <div class="row">
             <div class="col-lg-3 col-md-4 col-12 mb-4" v-for="t in TvShows" v-bind:key="t.TvShowId">
-                <router-link :to="{ name: 'DetailsTvShow', params: { TvShowId: t.TvShowId } }">
-                    <div class="card round  ed">
-                        <img class="card-img-top" :src="t.Image"/>
-                        <div class="card-body text-center" style="max-heigth:210px;">
-                            <h4 class="card-title" style="min-height:50px;max-height:50px;">
-                                {{t.Title}}
-                            </h4>
-                            <!--afficher SeasonCount suivi du mot "season" si SeasonCount est égal à 1-->
-                            <div v-if="t.SeasonCount === 1">1 season</div>
-                            <!--afficher SeasonCount suivi du mot seasons si SeasonCount est plus grand que 1-->
-                            <div v-else>{{t.SeasonCount}} seasons</div>
-                        </div>
-                    </div>
-                </router-link>
+                <TvShow v-bind:TvShow="t"/>
             </div>
         </div>
     </div>
@@ -59,8 +46,12 @@
 </style>
 
 <script>
+import TvShow from "@/components/TvShow.vue";
 export default {
     name: "Home",
+    components: {
+        TvShow
+    },
     data: function() {
         //définit les données de la vue.  Dans ce cas-ci, un tableau de pokemons, habitats, espèces (species) et poketypes
         return {
