@@ -5,8 +5,7 @@ import router from './router';
 Vue.config.productionTip = false;
 
 let initalState = {
-    access_token: null,
-    isConnected: false
+    access_token: null
 };
 
 new Vue({

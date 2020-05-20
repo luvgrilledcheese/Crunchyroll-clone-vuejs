@@ -30,7 +30,7 @@
                 <li class="nav-item active">
                     <router-link class="nav-link" to="/Favorite">Favorite Shows</router-link>
                 </li>
-                <li class="nav-item active" v-on:click="logout">
+                <li class="nav-item active" v-on:click="logout" v-if="this.isLogged">
                     <router-link class="nav-link" to="/">Logout</router-link>
                 </li>
                 <li class="nav-item active">
@@ -44,11 +44,24 @@
 <script>
 export default {
     name: "Navbar",
+    data: function() {
+        return {
+            isLogged: this.checkIfLogged()
+        };
+    },
     methods: {
         logout: function(){
             this.$root.access_token = null;
             document.getElementById("Logout").innerHTML
             console.log("user disconnected succesfully");
+        },
+        checkIfLogged: function(){
+            if (this.$root.access_token == null){
+                return false
+            }
+            else {
+                return true
+            }
         }
     }
 };
