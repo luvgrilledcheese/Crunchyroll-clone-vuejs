@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="Season != null">
         <h1>{{Season.EpisodeCount}} episodes</h1>
         <div class="row">
             <div class="col-md-4 col-sm-6 col-12 mb-4" v-for="e in Season.Episodes" v-bind:key="e.EpisodeId">

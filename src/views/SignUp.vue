@@ -49,18 +49,6 @@
                     </button>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-3"></div>
-                <div id="diverror" class="row">
-                    <div
-                        id="msgerror"
-                        class="alert alert-danger"
-                        style="display:inline-block;margin:0 auto;"
-                        role="alert">
-                        {{ errorText }}
-                    </div>
-                </div>
-            </div>
         </form>
     </div>
 </template>

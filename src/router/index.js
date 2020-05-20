@@ -1,14 +1,15 @@
+import About from '@/views/About.vue'
+import DetailsEpisode from '@/views/DetailsEpisode.vue'
+import DetailsTvShow from '@/views/DetailsTvShow.vue'
+import EpisodeList from '@/views/EpisodeList.vue'
+import FavoriteShows from '@/views/FavoriteShows.vue'
+import Home from '@/views/Home.vue'
+import Login from '@/views/Login.vue'
+import Profile from '@/views/Profile.vue'
+import SignUp from '@/views/SignUp.vue'
+import ViewEpisode from '@/views/ViewEpisode.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import About from '../views/About.vue'
-import DetailsTvShow from '../views/DetailsTvShow.vue'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import SignUp from '../views/SignUp.vue'
-import EpisodeList from '../views/EpisodeList.vue'
-import DetailsEpisode from '../views/DetailsEpisode'
-import Profile from '../views/Profile'
-import Favorite from '../views/Favorite'
 
 Vue.use(VueRouter)
 
@@ -37,7 +38,7 @@ const routes = [
         path: '/DetailsTvShow/:TvShowId',
         name: 'DetailsTvShow',
         component: DetailsTvShow,
-		props: true
+        props: true
     },
     {
         path: '/EpisodeList/:SeasonId',
@@ -52,16 +53,22 @@ const routes = [
         props: true
     },
     {
+        path: '/ViewEpisode/:EpisodeId',
+        name: 'ViewEpisode',
+        component: ViewEpisode,
+        props: true
+    },
+    {
+        path: '/FavoriteShows',
+        name: 'FavoriteShows',
+        component: FavoriteShows,
+    },
+    {
         path: '/Profile',
         name: 'Profile',
         component: Profile
     },
-    {
-        path: '/Favorite',
-        name: 'Favorite',
-        component: Favorite
-    },
-]
+];
 
 const router = new VueRouter({
     routes

@@ -1,19 +1,8 @@
 <template>
     <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">TP3</a>
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <router-link class="nav-link" to="/">Library</router-link>
@@ -21,7 +10,8 @@
                 <li class="nav-item active">
                     <router-link class="nav-link" to="/SignUp">Sign Up</router-link>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item active"
+                    v-if="this.$root.access_token == null">
                     <router-link class="nav-link" to="/Login">Login</router-link>
                 </li>
                 <li class="nav-item active">
@@ -30,13 +20,15 @@
                 <li class="nav-item active">
                     <router-link class="nav-link" to="/Favorite">Favorite Shows</router-link>
                 </li>
-                <li class="nav-item active" v-on:click="logout" v-if="this.isLogged">
-                    <router-link class="nav-link" to="/">Logout</router-link>
+                <li class="nav-item active"
+                    v-on:click="logout"
+                    v-if="this.$root.access_token != null">
+                    <span class="nav-link" style="cursor:pointer">Logout</span>
                 </li>
                 <li class="nav-item active">
                     <router-link class="nav-link" to="/about">About</router-link>
                 </li>
-            </ul>   
+            </ul>
         </div>
     </nav>
 </template>
@@ -44,29 +36,16 @@
 <script>
 export default {
     name: "Navbar",
-    data: function() {
-        return {
-            isLogged: this.checkIfLogged()
-        };
-    },
     methods: {
-        logout: function(){
+        logout: function () {
             this.$root.access_token = null;
-            document.getElementById("Logout").innerHTML
             console.log("user disconnected succesfully");
+            if (this.$route.path != "/") {
+                this.$router.push("/");
+            }
         },
-        checkIfLogged: function(){
-            if (this.$root.access_token == null){
-                return false
-            }
-            else {
-                return true
-            }
-        }
-    }
+    },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

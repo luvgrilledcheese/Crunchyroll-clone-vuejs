@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="Episode != null">
         <div class="row mb-4">
             <div class="col-5">
                 <img v-bind:src="Episode.Image" v-bind:alt="Episode.Title" style="max-width: 450px; min-width: 450px;"/>
@@ -58,7 +58,7 @@ export default {
     },
     mounted: function() {
         this.GetEpisode();
-    }
+        }
 };
 </script>
 

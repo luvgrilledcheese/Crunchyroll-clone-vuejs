@@ -37,7 +37,7 @@
                     <button type="submit" class="btn btn-primary" v-on:click.prevent="getToken">Login</button>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" v-if="errorText!=''">
                 <div class="col-3"></div>
                 <div id="diverror" class="col-9">
                     <div
