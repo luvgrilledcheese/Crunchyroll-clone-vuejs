@@ -7,6 +7,9 @@ import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
 import EpisodeList from '../views/EpisodeList.vue'
 import DetailsEpisode from '../views/DetailsEpisode'
+import Profile from '../views/Profile'
+import Favorite from '../views/Favorite'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -47,7 +50,17 @@ const routes = [
         name: 'DetailsEpisode',
         component: DetailsEpisode,
         props: true
-    }
+    },
+    {
+        path: '/Profile',
+        name: 'Profile',
+        component: Profile
+    },
+    {
+        path: '/Favorite',
+        name: 'Favorite',
+        component: Favorite
+    },
 ]
 
 const router = new VueRouter({

@@ -12,6 +12,7 @@
                         placeholder="Email"
                         required
                         maxlength="100"
+                        v-model="email"
                     />
                 </div>
             </div>
@@ -26,15 +27,14 @@
                         required
                         minlength="4"
                         maxlength="15"
+                        v-model="password"
                     />
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-3"></div>
                 <div class="col-9">
-                    <button type="submit" class="btn btn-primary">
-                        Login
-                    </button>
+                    <button type="submit" class="btn btn-primary" v-on:click.prevent="getToken">Login</button>
                 </div>
             </div>
             <div class="form-group row">
@@ -44,9 +44,8 @@
                         id="msgerror"
                         class="alert alert-danger"
                         style="display:inline-block;margin:0 auto;"
-                        role="alert">
-                        {{errorText}}
-                    </div>
+                        role="alert"
+                    >{{errorText}}</div>
                 </div>
             </div>
         </form>
@@ -54,7 +53,47 @@
 </template>
 
 <script>
-    export default {
-        name: "Login"
-    };
+export default {
+    name: "Login",
+    data: function() {
+        return {
+            email: "",
+            password: "",
+            errorText: ""
+        };
+    },
+    methods: {
+        getToken: function() {
+            let tokenURL = 'http://tvshowapi.sv55.cmaisonneuve.qc.ca/token';
+            let encodedUserName = encodeURIComponent(this.email);
+            let encodedPassword = encodeURIComponent(this.password);
+            let bodyContent = `grant_type=password&username=${encodedUserName}&password=${encodedPassword}`;
+
+            fetch(tokenURL, {
+                method: "POST",
+                body: bodyContent,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function (response) {
+                if (!response.ok) { throw response; }
+                return response.json();
+            }).then((data) => {
+                console.log(data);
+                this.$root.access_token = data.access_token;
+                this.$root.isConnected = true;
+                console.log("user connected succesfully");
+                this.$router.push("/");
+            }).catch((error) => {
+                error.json().then(errorMessage => {
+                    //traiter l'erreur
+                    console.error(errorMessage);
+                    if (errorMessage.error_description != null)
+                        this.errorText = errorMessage.error_description;
+                });
+                
+            });
+        }
+    }
+};
 </script>

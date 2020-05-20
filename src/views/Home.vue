@@ -53,7 +53,6 @@ export default {
         TvShow
     },
     data: function() {
-        //définit les données de la vue.  Dans ce cas-ci, un tableau de pokemons, habitats, espèces (species) et poketypes
         return {
             Genres: null,
             Studios: null,
@@ -125,3 +124,8 @@ export default {
 
 //exemple prof: http://tvshowclient.sv55.cmaisonneuve.qc.ca/#/DetailsTvShow/17
 //api:          http://tvshowapi.sv55.cmaisonneuve.qc.ca/api/tvshow?TvShowId=17
+
+// 3 users
+// admin@site.com     admin
+// donator@site.com   donator
+// member@site.com    member

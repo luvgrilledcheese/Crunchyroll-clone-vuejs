@@ -25,16 +25,32 @@
                     <router-link class="nav-link" to="/Login">Login</router-link>
                 </li>
                 <li class="nav-item active">
+                    <router-link class="nav-link" to="/Profile">Profile</router-link>
+                </li>
+                <li class="nav-item active">
+                    <router-link class="nav-link" to="/Favorite">Favorite Shows</router-link>
+                </li>
+                <li class="nav-item active" v-on:click="logout">
+                    <router-link class="nav-link" to="/">Logout</router-link>
+                </li>
+                <li class="nav-item active">
                     <router-link class="nav-link" to="/about">About</router-link>
                 </li>
-            </ul>
+            </ul>   
         </div>
     </nav>
 </template>
 
 <script>
 export default {
-    name: "Navbar"
+    name: "Navbar",
+    methods: {
+        logout: function(){
+            this.$root.access_token = null;
+            document.getElementById("Logout").innerHTML
+            console.log("user disconnected succesfully");
+        }
+    }
 };
 </script>
 
