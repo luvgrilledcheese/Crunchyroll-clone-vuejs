@@ -7,18 +7,21 @@
                 <li class="nav-item active">
                     <router-link class="nav-link" to="/">Library</router-link>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item active"
+                    v-if="this.$root.access_token == null">
                     <router-link class="nav-link" to="/SignUp">Sign Up</router-link>
                 </li>
                 <li class="nav-item active"
                     v-if="this.$root.access_token == null">
                     <router-link class="nav-link" to="/Login">Login</router-link>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item active"
+                    v-if="this.$root.access_token != null">
                     <router-link class="nav-link" to="/Profile">Profile</router-link>
                 </li>
-                <li class="nav-item active">
-                    <router-link class="nav-link" to="/Favorite">Favorite Shows</router-link>
+                <li class="nav-item active"
+                    v-if="this.$root.access_token != null">
+                    <router-link class="nav-link" to="/FavoriteShows">Favorite Shows</router-link>
                 </li>
                 <li class="nav-item active"
                     v-on:click="logout"
