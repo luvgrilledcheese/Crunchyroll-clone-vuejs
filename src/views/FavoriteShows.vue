@@ -34,7 +34,6 @@ import TvShow from "@/components/TvShow.vue";
                 if (!response.ok) { throw response; }
                 return response.json();
                 }).then((data) => {
-                    console.log("ca fonctionne")
                     console.log(data);
                     this.TvShows = data;
                     if (data.length == 0){
