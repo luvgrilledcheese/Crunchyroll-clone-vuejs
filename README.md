@@ -1,4 +1,6 @@
-# tp22
+# Crunchyroll clone in VueJs
+
+I made another Crunchyroll clone using VueJS, Bootstrap and and API as a part of a school project.
 
 ## Project setup
 ```
